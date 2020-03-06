@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import "./index.css";
 import WeatherCard from "./WeatherCard";
+import WeatherDetail from "./WeatherDetail";
+
+// const list = [...Array(5).keys()];
 
 const Cards = () => {
   return (
@@ -9,11 +12,8 @@ const Cards = () => {
       <h2>Weather App</h2>
       <div className="card-group">
         <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
-        <WeatherCard />
       </div>
+      <WeatherDetail />
     </div>
   );
 };

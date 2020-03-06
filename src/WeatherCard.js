@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import WeatherDetail from "./WeatherDetail";
 
 function WeatherCard() {
@@ -12,7 +12,7 @@ function WeatherCard() {
           <p>76</p>
         </div>
       </div>
-      <WeatherDetail />
+      {/* <WeatherDetail /> */}
     </div>
   );
 }
