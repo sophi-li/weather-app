@@ -5,10 +5,10 @@ const WeatherCard = ({ date, clouds, temp }) => {
     <div className="weather-card">
       <div className="card">
         <div className="card-body">
-          <h3>{date}</h3>
+          <h3>Date: {date}</h3>
           {/* <img alt="icon"></img> */}
-          <p>{clouds}</p>
-          <p>{temp}</p>
+          <p>Clouds: {clouds}</p>
+          <p>Temp: {temp}</p>
         </div>
       </div>
     </div>

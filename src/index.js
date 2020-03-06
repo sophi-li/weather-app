@@ -11,7 +11,8 @@ class Cards extends Component {
     weather: [],
     temp: [],
     clouds: [],
-    date: []
+    date: [],
+    datalist: []
   };
 
   componentDidMount() {
@@ -24,10 +25,10 @@ class Cards extends Component {
           weather: response.data.list[0],
           temp: response.data.list[0].main.temp,
           clouds: response.data.list[0].weather[0].description,
-          date: response.data.list[0].dt_txt
+          date: response.data.list[0].dt_txt,
+          datalist: response.data.list
         });
-        console.log("day", new Date(this.state.temp).getDate());
-        console.log(this.state.temp);
+        console.log("day", new Date(this.state.date).getDate());
         console.log("date", this.state.date);
         console.log("weather", this.state.weather);
         console.log(response.data.list);
@@ -38,21 +39,22 @@ class Cards extends Component {
   }
 
   render() {
+    const arr = this.state.datalist;
+    const elems = [];
+    for (let i = 4; i < arr.length; i += 8) {
+      elems.push(
+        <WeatherCard
+          temp={arr[i].main.temp}
+          date={arr[i].dt_txt}
+          clouds={arr[i].weather[0].description}
+        />
+      );
+    }
+    // console.log("arr len", this.state.datalist);
     return (
       <div>
         <h2>Weather App</h2>
-        <div className="card-group">
-          <WeatherCard
-            temp={this.state.temp}
-            clouds={this.state.clouds}
-            date={this.state.date}
-          />
-        </div>
-        <div>
-          temp: {this.state.temp}
-          clouds: {this.state.clouds}
-          date: {this.state.date}
-        </div>
+        <div className="card-group">{elems}</div>
       </div>
     );
   }
