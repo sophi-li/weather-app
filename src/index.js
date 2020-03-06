@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 // import "./index.css";
 import WeatherCard from "./WeatherCard";
-// import axios from "axios";
-
-// const list = [...Array(5).keys()];
 
 class Cards extends Component {
   state = {
@@ -13,7 +10,8 @@ class Cards extends Component {
     temp: [],
     clouds: [],
     date: [],
-    datalist: []
+    datalist: [],
+    hour: []
   };
 
   componentDidMount() {
@@ -21,20 +19,34 @@ class Cards extends Component {
       "http://api.openweathermap.org/data/2.5/forecast?q=San+Francisco&appid=0b8748d716f8e438393856aa8448e0ba";
     fetch(url)
       .then(response => response.json())
-      .then(response => this.setState({ datalist: response.list }))
+      .then(response =>
+        this.setState({
+          datalist: response.list
+        })
+      )
       .catch(() => this.setState({ hasErrors: true }));
   }
 
   render() {
-    console.log("2nd", this.state.datalist);
+    // Getting data from noon
     const arr = this.state.datalist;
+    let noonArray = arr.filter(function(el) {
+      // console.log("ji", el);
+      // − 273.15) × 9/5 + 32
+      el.main.temp = Math.round(((el.main.temp - 273) * 9) / 5 + 32);
+      return el.dt_txt.includes("12:00");
+    });
+    console.log("noonarray", noonArray);
+
+    // loop through and display cards
     const elems = [];
-    for (let i = 4; i < arr.length; i += 8) {
+    for (let i = 0; i < noonArray.length; i++) {
       elems.push(
         <WeatherCard
-          temp={arr[i].main.temp}
-          date={arr[i].dt_txt}
-          clouds={arr[i].weather[0].description}
+          temp={noonArray[i].main.temp}
+          date={noonArray[i].dt_txt}
+          clouds={noonArray[i].weather[0].description}
+          key={i}
         />
       );
     }
@@ -42,7 +54,7 @@ class Cards extends Component {
     return (
       <div>
         <h2>Weather App</h2>
-        <div className="card-group">{elems} hi</div>
+        <div className="card-group">{elems}</div>
       </div>
     );
   }
