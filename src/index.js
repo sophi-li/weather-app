@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-// import "./index.css";
+import './index.css'
 import moment from 'moment'
 import WeatherCard from './WeatherCard'
 
 class Cards extends Component {
-  state = {
-    hasErrors: false,
-    datalist: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      hasErrors: false,
+      datalist: []
+    }
   }
 
   componentDidMount() {
@@ -48,8 +51,8 @@ class Cards extends Component {
 
     return (
       <div>
-        <h2>Weather App</h2>
-        <div className="card-group">{elems}</div>
+        <h2 className="text-center">San Francisco 5 Day Weather</h2>
+        <div className="card-group weather-cards">{elems}</div>
       </div>
     )
   }
