@@ -11,7 +11,7 @@ const WeatherCard = ({ date, clouds, temp, cloudIcon }) => {
         <p>{temp}F</p>
         <p>{clouds}</p>
         {/* <p>{cloudIcon}</p> */}
-        <img src={cloudIcon} />
+        <img src={cloudIcon} alt="weather-icon" />
       </div>
     </div>
     // </div>
