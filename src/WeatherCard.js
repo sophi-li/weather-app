@@ -1,11 +1,14 @@
 import React from "react";
+import Moment from "react-moment";
 
 const WeatherCard = ({ date, clouds, temp }) => {
   return (
     <div className="weather-card">
       <div className="card">
         <div className="card-body">
-          <h3>Date: {date}</h3>
+          <h2>
+            <Moment date={date} />
+          </h2>
           {/* <img alt="icon"></img> */}
           <p>Clouds: {clouds}</p>
           <p>Temp: {temp}</p>
