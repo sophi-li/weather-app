@@ -26,7 +26,7 @@ class Cards extends Component {
   }
 
   render() {
-    // Getting data from noon
+    // Getting data for time equal to noon
     const arr = this.state.datalist;
     let noonArray = arr.filter(function(el) {
       el.main.temp = Math.round(((el.main.temp - 273) * 9) / 5 + 32);
@@ -46,15 +46,12 @@ class Cards extends Component {
           key={i}
         />
       );
-      console.log(moment(noonArray[i].dt_txt).format("dddd"));
     }
 
     return (
       <div>
         <h2>Weather App</h2>
         <div className="card-group">{elems}</div>
-
-        {/* {moment(dateToBeFormate).format("DD/MM/YYYY")} */}
       </div>
     );
   }
