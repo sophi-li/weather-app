@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const WeatherCard = ({ date, clouds, temp }) => {
   return (
@@ -12,7 +13,13 @@ const WeatherCard = ({ date, clouds, temp }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default WeatherCard;
+WeatherCard.propTypes = {
+  date: PropTypes.string,
+  clouds: PropTypes.string,
+  temp: PropTypes.string
+}
+
+export default WeatherCard
