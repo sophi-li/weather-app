@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 // import "./index.css";
-
 import moment from 'moment'
-
 import WeatherCard from './WeatherCard'
 
 class Cards extends Component {
