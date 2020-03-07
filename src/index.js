@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 // import "./index.css";
-import Moment from "react-moment";
-// import * as moment from "moment";
+
+import moment from "moment";
+
 import WeatherCard from "./WeatherCard";
 
 class Cards extends Component {
@@ -38,39 +39,26 @@ class Cards extends Component {
     });
     console.log("noonarray", noonArray);
 
-    // remove time
-    for (let i = 0; i < noonArray.length; i++) {
-      noonArray[i].dt_txt = noonArray[i].dt_txt;
-      // .toString()
-      // .split(" ")
-      // .shift();
-    }
-
-    // loop through and display cards
+    // loop through and display cards with weather data for the next 5 days
     const elems = [];
     for (let i = 0; i < noonArray.length; i++) {
       elems.push(
         <WeatherCard
           temp={noonArray[i].main.temp}
-          date={noonArray[i].dt_txt}
+          // Moment changes date to "Monday", "Tuesday", etc
+          date={moment(noonArray[i].dt_txt).format("dddd")}
           clouds={noonArray[i].weather[0].description}
           key={i}
         />
       );
-      console.log(
-        noonArray[i].dt_txt
-          .toString()
-          .split(" ")
-          .shift()
-      );
+      console.log(moment(noonArray[i].dt_txt).format("dddd"));
     }
 
     return (
       <div>
         <h2>Weather App</h2>
         <div className="card-group">{elems}</div>
-        <Moment date={elems.dt_txt} />
-        <Moment format="MMMM Do YYYY" date={elems.dt_txt} />
+
         {/* {moment(dateToBeFormate).format("DD/MM/YYYY")} */}
       </div>
     );
