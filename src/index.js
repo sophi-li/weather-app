@@ -9,12 +9,7 @@ import WeatherCard from "./WeatherCard";
 class Cards extends Component {
   state = {
     hasErrors: false,
-    weather: [],
-    temp: [],
-    clouds: [],
-    date: [],
-    datalist: [],
-    hour: []
+    datalist: []
   };
 
   componentDidMount() {
