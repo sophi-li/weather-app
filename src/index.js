@@ -27,23 +27,28 @@ class Cards extends Component {
   }
 
   render() {
-    // Getting data for time equal to noon
+    // Get data for time equal to 15:00
     const arr = this.state.datalist
     let noonArray = arr.filter(function(el) {
       el.main.temp = Math.round(((el.main.temp - 273) * 9) / 5 + 32)
-      return el.dt_txt.includes('12:00')
+      return el.dt_txt.includes('15:00')
     })
-    console.log('noonarray', noonArray)
+    console.log('array', arr)
 
     // loop through and display cards with weather data for the next 5 days
     const elems = []
     for (let i = 0; i < noonArray.length; i++) {
+      const cloudID = noonArray[i].weather[0].icon
+      const cloudURL =
+        'http://openweathermap.org/img/wn/' + `${cloudID}` + '@2x.png'
+      // console.log('clou', noonArray[i].weather)
       elems.push(
         <WeatherCard
           temp={noonArray[i].main.temp}
           // Moment changes date to "Monday", "Tuesday", etc
           date={moment(noonArray[i].dt_txt).format('dddd')}
           clouds={noonArray[i].weather[0].description}
+          cloudIcon={cloudURL}
           key={i}
         />
       )
