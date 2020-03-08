@@ -1,18 +1,28 @@
-import React from "react";
+import React from 'react'
+import './WeatherCard.css'
+import PropTypes from 'prop-types'
 
-const WeatherCard = ({ date, clouds, temp }) => {
+const WeatherCard = ({ date, clouds, temp, cloudIcon }) => {
   return (
-    <div className="weather-card">
-      <div className="card">
-        <div className="card-body">
-          <h3>{date}</h3>
-          {/* <img alt="icon"></img> */}
-          <p>{clouds}</p>
-          <p>{temp}</p>
-        </div>
+    // <div className="weather-cards">
+    <div className="card">
+      <div className="card-body text-center">
+        <h2 className="card-title">{date}</h2>
+        <p>{temp}F</p>
+        <p>{clouds}</p>
+        {/* <p>{cloudIcon}</p> */}
+        <img src={cloudIcon} alt="weather-icon" />
       </div>
     </div>
-  );
-};
+    // </div>
+  )
+}
 
-export default WeatherCard;
+WeatherCard.propTypes = {
+  date: PropTypes.string,
+  clouds: PropTypes.string,
+  temp: PropTypes.number,
+  cloudIcon: PropTypes.string
+}
+
+export default WeatherCard
