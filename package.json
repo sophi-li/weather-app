@@ -6,13 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-moment": "^0.9.7",
     "react-scripts": "3.4.0"
   },
   "scripts": {
@@ -20,9 +19,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -38,6 +34,19 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0"
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
